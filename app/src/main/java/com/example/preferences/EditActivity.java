@@ -2,7 +2,6 @@ package com.example.preferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,7 @@ public class EditActivity extends AppCompatActivity {
     private static final String KEY_TEXT = "keyText";
 
     public void startMain(View view) {
-        textEditor = (EditText) findViewById(R.id.textEditor);
+        textEditor = findViewById(R.id.textEditor);
 
         String tempText = textEditor.getText().toString();
 
@@ -32,7 +31,5 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-
-
     }
 }

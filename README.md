@@ -1,9 +1,23 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+At the beginning I created the shared preferences. I also used "android:onClick" in the xml to make a second activity accessible. In this second activity, I added a EditText field and a button.
+When this button was pressed, the following method was run:
 
-_Du kan ta bort all text som finns sedan tidigare_.
+    public void startMain(View view) {
+        textEditor = (EditText) findViewById(R.id.textEditor);
+
+        String tempText = textEditor.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editPrefs = sharedPreferences.edit();
+        editPrefs.putString(KEY_TEXT,tempText);
+        editPrefs.apply();
+
+        finish();
+    }
+
+which added whatever text is present in the EditText field and added it to the shared preference. When the main activity resumed, this text was then added to the prefText view and displayed.
 
 ## Följande grundsyn gäller dugga-svar:
 
@@ -16,24 +30,21 @@ _Du kan ta bort all text som finns sedan tidigare_.
 Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        savedText = sharedPreferences.getString(KEY_TEXT    , "");
+
+        prefText.setText(savedText);
     }
-}
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Main1.png)
+![](Edit.png)
+![](Main2.png)
 
 Läs gärna:
 
