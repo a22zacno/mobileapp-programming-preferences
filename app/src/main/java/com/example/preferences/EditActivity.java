@@ -17,10 +17,13 @@ public class EditActivity extends AppCompatActivity {
 
     public void startMain(View view) {
         textEditor = (EditText) findViewById(R.id.textEditor);
+
+        String tempText = textEditor.getText().toString();
+
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(KEY_TEXT,textEditor.getText().toString());
-        editor.commit();
+        SharedPreferences.Editor editPrefs = sharedPreferences.edit();
+        editPrefs.putString(KEY_TEXT,tempText);
+        editPrefs.apply();
 
         finish();
     }
