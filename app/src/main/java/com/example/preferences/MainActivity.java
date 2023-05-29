@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.preferences;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String shared;
     public void startEdit(View view) {
-        //Starts the second activity
-        Intent i = new Intent(MainActivity.this, SecondActivity.class);
+        //Starts the edit activity
+        Intent i = new Intent(MainActivity.this, EditActivity.class);
         startActivity(i);
     }
 
